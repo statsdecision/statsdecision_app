@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | SDC Solutions Digitales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script src="{% static 'js/login.js' %}"></script>
+
+</head>
+<body>
+    {% load static %}
+    <div class="bg-pattern"></div>
+    <div class="brand-watermark">SDC</div>
+    <div class="container">
+        <div class="login-panel">
+            <div class="brand-header">
+                <div class="brand-identity">
+                    <div class="brand-logo">
+                      <img src="{% static 'images/sdc.jpg' %}" alt="SDC - Nom complet de l'entreprise" class="logo-img" loading="lazy">
+                    </div>
+                  </div>
+            </div>
+            
+            <h1>Accès sécurisé</h1>
+            <p class="subtitle">Votre portail vers l'excellence </p>
+            
+            {% if form.errors %}
+                <div style="color: #DC2626; background: rgba(220, 38, 38, 0.05); padding: 12px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Identifiants incorrects - Veuillez réessayer
+                </div>
+            {% endif %}
+            
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" placeholder="nom d'utilisateur" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-unlock-alt"></i> Accéder à la plateforme
+                </button>
+                
+                <div class="links-container">
+                    <a href="{% url 'password_reset' %}" class="link">
+                        <i class="fas fa-shield-alt"></i> mot de passe oublié
+                    </a>
+                    <a href="{% url 'register' %}" class="link">
+                        <i class="fas fa-rocket"></i> Première connexion ?
+                    </a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="illustration">
+            <div class="marketing-illustration">
+                <i class="fas fa-chart-line"></i>
+                <h3>Statsdecision Consulting, votre meilleur conseiller en matière de prise de decision</h3>
+                <p>Accédez à des outils puissants et des formations qui vous aideront à optimiser vos processus, analyser vos données et développer votre activité.</p>
+                <div style="margin-top: 25px; display: flex; justify-content: center; gap: 15px;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-lock" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        <p style="font-size: 0.8rem; margin-top: 5px;">Sécurité maximale</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-bolt" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        <p style="font-size: 0.8rem; margin-top: 5px;">Performance</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-headset" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        <p style="font-size: 0.8rem; margin-top: 5px;">Support 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

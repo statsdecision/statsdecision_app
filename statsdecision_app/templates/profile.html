@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="gradient-bg py-6 px-8 text-white">
+            <h1 class="text-2xl font-bold">Mon Profil</h1>
+        </div>
+        
+        <div class="p-8">
+            <div class="flex items-center space-x-6 mb-8">
+                <div class="bg-gray-200 rounded-full p-2">
+                    <i class="fas fa-user-circle text-5xl text-gray-500"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold">{{ user.get_full_name|default:user.username }}</h2>
+                    <p class="text-gray-600">{{ user.email }}</p>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="border-b pb-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Informations personnelles</h3>
+                    <p><span class="font-medium">Nom d'utilisateur:</span> {{ user.username }}</p>
+                    <p><span class="font-medium">Email:</span> {{ user.email }}</p>
+                    {% if user.first_name %}
+                    <p><span class="font-medium">Prénom:</span> {{ user.first_name }}</p>
+                    {% endif %}
+                    {% if user.last_name %}
+                    <p><span class="font-medium">Nom:</span> {{ user.last_name }}</p>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    <a href="{% url 'password_reset' %}" class="text-blue-600 hover:text-blue-800">
+                        <i class="fas fa-key mr-2"></i>Changer mon mot de passe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription | SDC Solutions Digitales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    {% load widget_tweaks %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <script src="{% static 'js/register.js' %}"></script>
+
+</head>
+<body>
+    {% load static %}
+    <div class="bg-pattern"></div>
+    <div class="brand-watermark">SDC</div>
+    
+    <div class="container">
+        <div class="register-panel">
+            <div class="brand-header">
+                <div class="brand-identity">
+                    <div class="brand-logo">
+                      <img src="{% static 'images/sdc.jpg' %}" alt="SDC - Nom complet de l'entreprise" class="logo-img" loading="lazy">
+                    </div>
+                  </div>
+            </div>
+            
+            <h1>Créer un compte</h1>
+            <p class="subtitle">Commencez votre voyage digital avec nous</p>
+            
+            {% if form.errors %}
+                <div style="color: #DC2626; background: rgba(220, 38, 38, 0.05); padding: 12px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Veuillez corriger les erreurs ci-dessous
+                </div>
+            {% endif %}
+            
+            <form method="post" id="UserRegistrationForm">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {% render_field field class+="form-control" placeholder="Entrez votre "|add:field.label %}
+                    {% if field.errors %}
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle"></i> {{ field.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                
+                <button type="submit" class="btn-register">
+                    <i class="fas fa-user-plus"></i> S'inscrire
+                </button>
+            </form>
+            
+            <div class="links-container">
+                <a href="{% url 'login' %}" class="link">
+                    <i class="fas fa-sign-in-alt"></i> Vous avez déjà un compte ?
+                </a>
+            </div>
+        </div>
+        
+        <div class="illustration">
+            <div class="marketing-box">
+                <i class="fas fa-rocket marketing-icon"></i>
+                <h3 class="marketing-title">Démarrez en toute simplicité</h3>
+                <p class="marketing-text">Rejoignez notre plateforme et accédez à des formations de qualités pour un avenir plus radieux.</p>
+                
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle benefit-icon"></i>
+                        <p class="benefit-text">Validation rapide</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-gem benefit-icon"></i>
+                        <p class="benefit-text">Nos services sont disponible 7j/7</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-headset benefit-icon"></i>
+                        <p class="benefit-text">Support 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>

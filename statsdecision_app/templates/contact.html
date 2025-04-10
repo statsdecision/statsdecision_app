@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact - StatDecision Consulting{% endblock %}
+
+{% block extra_css %}
+<style>
+    .contact-hero {
+        background-image: url('{% static "images/contacter.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll; /* Changé de fixed à scroll pour mobile */
+    }
+    @media (min-width: 768px) {
+        .contact-hero {
+            background-attachment: fixed; /* Seulement fixed sur desktop */
+        }
+    }
+    .contact-card {
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem; /* Espacement supplémentaire sur mobile */
+    }
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .contact-form input,
+    .contact-form textarea {
+        transition: all 0.3s ease;
+        width: 100%; /* Assurance que les champs prennent toute la largeur */
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="contact-hero h-64 md:h-96 flex items-center justify-center relative">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="text-center text-white z-10 px-4 md:px-6" data-aos="fade-up">
+        <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6">Contactez-nous</h1>
+        <p class="text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto">
+            Nous sommes à votre écoute pour répondre à toutes vos questions
+        </p>
+    </div>
+</section>
+
+<!-- Section Contact -->
+<section class="container mx-auto py-10 md:py-20 px-4 md:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+        <!-- Informations de contact -->
+        <div class="space-y-6 md:space-y-8" data-aos="fade-right">
+            <div class="contact-card bg-white rounded-xl p-6 md:p-8">
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 md:mb-6">Informations de contact</h2>
+                
+                <div class="space-y-4 md:space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 md:p-3 rounded-full mr-3 md:mr-4">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-lg md:text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 text-sm md:text-base">Adresse</h3>
+                            <p class="text-gray-600 text-sm md:text-base">123 Rue des Statistiques, Ouagadougou, Burkina Faso</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 md:p-3 rounded-full mr-3 md:mr-4">
+                            <i class="fas fa-phone-alt text-blue-600 text-lg md:text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 text-sm md:text-base">Téléphone</h3>
+                            <p class="text-gray-600 text-sm md:text-base">+226 75 98 73 67</p>
+                            <p class="text-gray-600 text-sm md:text-base">+225 07 89 45 12 36</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 md:p-3 rounded-full mr-3 md:mr-4">
+                            <i class="fas fa-envelope text-blue-600 text-lg md:text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 text-sm md:text-base">Email</h3>
+                            <p class="text-gray-600 text-sm md:text-base">contact@statsdecision.com</p>
+                            <p class="text-gray-600 text-sm md:text-base">support@statsdecision.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 md:p-3 rounded-full mr-3 md:mr-4">
+                            <i class="fas fa-clock text-blue-600 text-lg md:text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 text-sm md:text-base">Heures d'ouverture</h3>
+                            <p class="text-gray-600 text-sm md:text-base">Lundi - Vendredi: 8h00 - 18h00</p>
+                            <p class="text-gray-600 text-sm md:text-base">Samedi: 9h00 - 13h00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-card bg-white rounded-xl p-6 md:p-8">
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 md:mb-6">Réseaux sociaux</h2>
+                <div class="flex justify-center md:justify-start space-x-3 md:space-x-4">
+                    <a href="#" class="bg-blue-100 hover:bg-blue-200 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-facebook-f text-blue-600 text-lg md:text-xl"></i>
+                    </a>
+                    <a href="#" class="bg-blue-100 hover:bg-blue-200 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-twitter text-blue-600 text-lg md:text-xl"></i>
+                    </a>
+                    <a href="#" class="bg-blue-100 hover:bg-blue-200 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-linkedin-in text-blue-600 text-lg md:text-xl"></i>
+                    </a>
+                    <a href="#" class="bg-blue-100 hover:bg-blue-200 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-youtube text-blue-600 text-lg md:text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formulaire de contact -->
+        <div class="contact-card bg-white rounded-xl p-6 md:p-8" data-aos="fade-left">
+            <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-blue-900 mb-4 md:mb-6">Envoyez-nous un message</h2>
+            
+            <form method="POST" class="contact-form space-y-4 md:space-y-6">
+                {% csrf_token %}
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+                    <div>
+                        <label for="prenom" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base">
+                    </div>
+                    <div>
+                        <label for="nom" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Nom</label>
+                        <input type="text" id="nom" name="nom" class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base">
+                </div>
+                
+                <div>
+                    <label for="sujet" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Sujet</label>
+                    <select id="sujet" name="sujet" class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base">
+                        <option value="">Sélectionnez un sujet</option>
+                        <option value="formation">Demande de formation</option>
+                        <option value="consultation">Consultation statistique</option>
+                        <option value="partenariat">Proposition de partenariat</option>
+                        <option value="autre">Autre demande</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Message</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"></textarea>
+                </div>
+                
+                <div class="flex items-center">
+                    <input type="checkbox" id="consentement" name="consentement" class="mr-2 md:mr-3">
+                    <label for="consentement" class="text-gray-600 text-xs md:text-sm">J'accepte que mes données soient utilisées pour traiter ma demande</label>
+                </div>
+                
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transition duration-300 flex items-center justify-center space-x-2 text-sm md:text-base">
+                    <i class="fas fa-paper-plane text-sm md:text-base"></i>
+                    <span>Envoyer le message</span>
+                </button>
+            </form>            
+        </div>
+    </div>
+</section>
+
+<!-- Carte Google Maps -->
+<section class="container mx-auto px-4 md:px-6 pb-10 md:pb-20">
+    <div class="contact-card bg-white rounded-xl overflow-hidden" data-aos="fade-up">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.804669876908!2d-1.524294!3d12.639232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xeafdbec035d76d3%3A0x118a0636ad050ca6!2sOuagadougou%2C%20Burkina%20Faso!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" 
+                width="100%" 
+                height="300" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                class="rounded-xl"></iframe>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Initialisation des animations
+    AOS.init({
+        duration: 800,
+        once: true,
+        disable: window.innerWidth < 768 // Désactive AOS sur mobile si nécessaire
+    });
+
+    // Validation du formulaire
+    document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Récupération des valeurs
+        const prenom = document.getElementById('prenom').value;
+        const nom = document.getElementById('nom').value;
+        const email = document.getElementById('email').value;
+        const sujet = document.getElementById('sujet').value;
+        const message = document.getElementById('message').value;
+        const consentement = document.getElementById('consentement').checked;
+        
+        // Validation simple
+        if (!prenom || !nom || !email || !sujet || !message || !consentement) {
+            alert('Veuillez remplir tous les champs obligatoires et accepter les conditions');
+            return;
+        }
+        
+        // Ici vous pourriez ajouter une requête AJAX pour envoyer le formulaire
+        alert('Message envoyé avec succès! Nous vous contacterons bientôt.');
+        this.reset();
+    });
+</script>
+{% endblock %}

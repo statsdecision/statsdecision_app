@@ -1,0 +1,30 @@
+.contact-hero {
+    background-image: url('{% static "images/contacter.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* Changé de fixed à scroll pour mobile */
+}
+@media (min-width: 768px) {
+    .contact-hero {
+        background-attachment: fixed; /* Seulement fixed sur desktop */
+    }
+}
+.contact-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem; /* Espacement supplémentaire sur mobile */
+}
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.contact-form input,
+.contact-form textarea {
+    transition: all 0.3s ease;
+    width: 100%; /* Assurance que les champs prennent toute la largeur */
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}

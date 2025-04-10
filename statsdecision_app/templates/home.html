@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Accueil - StatDecision Consulting{% endblock %}
+
+{% block extra_css %}
+<style>
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0); }
+    }
+    .floating-img {
+        animation: float 4s ease-in-out infinite;
+    }
+    .hero-section {
+        background-image: url('{% static "images/Statistique-aide-decision.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .service-card {
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section h-screen flex items-center justify-center relative">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="text-center text-white z-10 px-6" data-aos="fade-up">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">StatDecision Consulting</h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">L'expertise statistique au service de vos décisions stratégiques</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="{% url 'video_list' %}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center space-x-2">
+                <i class="fas fa-play"></i>
+                <span>Nos Formations</span>
+            </a>
+            <a href="#services" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center space-x-2">
+                <i class="fas fa-chart-line"></i>
+                <span>Nos Services</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Flèche de défilement -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <a href="#about" class="text-white text-4xl">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+</section>
+
+<!-- À propos de nous -->
+<section id="about" class="container mx-auto py-20 px-6">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2" data-aos="fade-right">
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Qui sommes-nous ?</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                StatDecision Consulting est une entreprise spécialisée dans la <span class="text-blue-600 font-semibold">formation</span>, 
+                l'<span class="text-blue-600 font-semibold">analyse statistique</span> et la <span class="text-blue-600 font-semibold">conception d'outils numériques</span>.
+            </p>
+            <p class="text-gray-700 text-lg">
+                Nous accompagnons les professionnels et les organisations dans l'optimisation de leurs décisions grâce à une exploitation rigoureuse des données.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+                <div class="bg-blue-100 p-4 rounded-lg flex items-center space-x-3">
+                    <i class="fas fa-check-circle text-blue-600 text-2xl"></i>
+                    <span class="font-medium">Expertise confirmée</span>
+                </div>
+                <div class="bg-blue-100 p-4 rounded-lg flex items-center space-x-3">
+                    <i class="fas fa-users text-blue-600 text-2xl"></i>
+                    <span class="font-medium">Approche personnalisée</span>
+                </div>
+            </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+            <img src="{% static 'images/laptop-1836990_1280.jpg' %}" alt="Notre équipe" 
+                 class="rounded-xl shadow-2xl max-w-md w-full floating-img">
+        </div>
+    </div>
+</section>
+
+<!-- Section des Services -->
+<section id="services" class="gradient-bg py-20">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">🚀 Nos Services</h2>
+            <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="service-card bg-white rounded-xl p-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="text-blue-600 text-4xl mb-4">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Analyse des données</h3>
+                <p class="text-gray-600">
+                    Assistance complète pour l'analyse des données avec des méthodes statistiques avancées.
+                </p>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="service-card bg-white rounded-xl p-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="text-green-600 text-4xl mb-4">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Logiciels Statistiques</h3>
+                <p class="text-gray-600">
+                    Formations spécialisées sur R, Stata, SPSS, QGIS et autres outils d'analyse.
+                </p>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="service-card bg-white rounded-xl p-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="text-purple-600 text-4xl mb-4">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Outils de Collecte</h3>
+                <p class="text-gray-600">
+                    Maîtrise des outils comme Kobo, ODK, Google Forms, CSPRO et Sphinx.
+                </p>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="service-card bg-white rounded-xl p-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="text-red-600 text-4xl mb-4">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Visualisation des données</h3>
+                <p class="text-gray-600">
+                    Création de dashboards et représentations visuelles percutantes.
+                </p>
+            </div>
+            
+            <!-- Service 5 -->
+            <div class="service-card bg-white rounded-xl p-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="text-indigo-600 text-4xl mb-4">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Gestion de bases de données</h3>
+                <p class="text-gray-600">
+                    Structuration et optimisation de vos bases de données.
+                </p>
+            </div>
+            
+            <!-- Service 6 -->
+            <div class="service-card bg-white rounded-xl p-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="text-teal-600 text-4xl mb-4">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Conseil stratégique</h3>
+                <p class="text-gray-600">
+                    Aide à la décision basée sur l'analyse de vos données.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Témoignages (version horizontale comme dans l'original) -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">👥 Ce qu'ils disent de nous</h2>
+            <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+        </div>
+        
+        <!-- Conteneur horizontal pour les témoignages -->
+        <div class="flex flex-nowrap overflow-x-auto pb-6 -mx-4 px-4" style="scroll-snap-type: x mandatory;">
+            <!-- Supprimez la classe swiper-container et swiper-wrapper -->
+            
+            <!-- Témoignage 1 -->
+            <div class="flex-shrink-0 w-80 mx-4 bg-gray-50 p-8 rounded-xl shadow-md" style="scroll-snap-align: start;">
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 text-2xl mr-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 italic">
+                    "Les formations de StatDecision Consulting ont transformé notre façon d'analyser les données. Leur expertise est incomparable."
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold text-gray-800">Marie Dupont</h4>
+                        <p class="text-gray-600 text-sm">Directrice Marketing</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Témoignage 2 -->
+            <div class="flex-shrink-0 w-80 mx-4 bg-gray-50 p-8 rounded-xl shadow-md" style="scroll-snap-align: start;">
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 text-2xl mr-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 italic">
+                    "Un accompagnement sur mesure qui a permis à notre équipe de gagner en efficacité dans le traitement des données."
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold text-gray-800">Jean Martin</h4>
+                        <p class="text-gray-600 text-sm">Chef de projet</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Témoignage 3 -->
+            <div class="flex-shrink-0 w-80 mx-4 bg-gray-50 p-8 rounded-xl shadow-md" style="scroll-snap-align: start;">
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 text-2xl mr-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 italic">
+                    "Approche très professionnelle. Les outils développés pour nous ont considérablement simplifié notre collecte de données."
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold text-gray-800">Sophie Leroy</h4>
+                        <p class="text-gray-600 text-sm">Responsable RH</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    // Initialisation du carrousel de témoignages
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+            },
+        }
+    });
+    
+</script>
+<script>
+    // Initialisation des animations
+    AOS.init({
+        duration: 800,
+        once: true
+    });
+</script>
+{% endblock %}

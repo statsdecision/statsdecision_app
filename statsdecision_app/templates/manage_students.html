@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Gérer les étudiants - {{ course.title }}</h1>
+
+<!-- Liste des étudiants en attente de validation -->
+<h3>Demandes en attente</h3>
+<ul>
+  {% for student in pending_students %}
+    <li>
+      {{ student.username }}
+      <form method="post" action="{% url 'manage_students' course.id %}" style="display:inline;">
+        {% csrf_token %}
+        <input type="hidden" name="student_id" value="{{ student.id }}">
+        <button type="submit" name="action" value="accept" class="btn btn-success">Accepter</button>
+        <button type="submit" name="action" value="reject" class="btn btn-danger">Rejeter</button>
+      </form>
+    </li>
+  {% empty %}
+    <p>Aucune demande en attente.</p>
+  {% endfor %}
+</ul>
+
+<!-- Liste des étudiants inscrits -->
+<h3>Étudiants inscrits</h3>
+<ul>
+  {% for student in course.students.all %}
+    <li>{{ student.username }}</li>
+  {% empty %}
+    <p>Aucun étudiant inscrit.</p>
+  {% endfor %}
+</ul>
+{% endblock %}
