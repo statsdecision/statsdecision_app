@@ -31,7 +31,11 @@ ON_RENDER = os.environ.get('RENDER', None) is not None
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True' and not ON_RENDER
 
-ALLOWED_HOSTS = ["statsdecision.onrender.com", "localhost"]
+ALLOWED_HOSTS = [
+    os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'statdecision-1.onrender.com'),
+    'localhost',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -162,7 +166,7 @@ EMAIL_HOST_PASSWORD = "bgnt tevr ggla doer"
 if ON_RENDER or not DEBUG:
     # HTTPS Settings
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = False
+    SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     
