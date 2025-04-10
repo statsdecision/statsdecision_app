@@ -32,11 +32,7 @@ ON_RENDER = os.environ.get('RENDER', None) is not None
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'statdecision-1.onrender.com'),
-    'localhost',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = [*]
 
 
 # Application definition
@@ -133,7 +129,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 WHITENOISE_MANIFEST_STRICT = False
 
 # Default primary key field type
