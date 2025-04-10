@@ -1,6 +1,5 @@
-SECRET_KEY = 'django-insecure-56fxwhl)gs-5^89pmr!!es6!xl*eoy+z8%+jfl%x&j%2z26#9)'
+SECRET_KEY=django-insecure-56fxwhl)gs-5^89pmr!!es6!xl*eoy+z8%+jfl%x&j%2z26#9)
 DEBUG=True
-GMAIL_APP_PASSWORD=bgnt tevr ggla doer 
-DATABASE_URL=postgresql://statsdecision_sql_user:CSTHYWJCkltUtGk6G4EcRgJXoDwLvKRN@dpg-cvqpvppr0fns73fp5qig-a.oregon-postgres.render.com/statsdecision_sql
+GMAIL_APP_PASSWORD=bgnt tevr ggla doer
+DATABASE_URL=postgresql://statsdecision_sql_user:CSTHYWJCkltUtGk6G4EcRgJXoDwLvKRN@dpg-cvqpvp0pr0fns73fp5qig-a.oregon-postgres.render.com/statsdecision_sql
 EMAIL_HOST_USER=kaborealphonse75@gmail.com
-PYTHON_VERSION=3.13.1
