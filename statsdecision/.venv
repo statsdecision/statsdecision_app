@@ -1,0 +1,5 @@
+SECRET_KEY = 'django-insecure-y=8j9kh6cb54s&%-kps5(sxm1*5vbz_j^!n_u77qkosm7e50e#'
+DEBUG=True
+GMAIL_APP_PASSWORD=bgnt tevr ggla doer 
+DATABASE_URL=postgresql://statsdecision_sql_user:CSTHYWJCkltUtGk6G4EcRgJXoDwLvKRN@dpg-cvqpvppr0fns73fp5qig-a.oregon-postgres.render.com/statsdecision_sql
+EMAIL_HOST_USER=kaborealphonse75@gmail.com

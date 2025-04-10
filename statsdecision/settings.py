@@ -24,13 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-56fxwhl)gs-5^89pmr!!es6!xl*eoy+z8%+jfl%x&j%2z26#9)'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-dev-key-unsafe')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Détection automatique de l'environnement Render
+ON_RENDER = os.environ.get('RENDER', None) is not None
 
-
-
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True' and not ON_RENDER
 
 ALLOWED_HOSTS = ["statsdecision.onrender.com", "localhost"]
 
@@ -84,10 +83,7 @@ WSGI_APPLICATION = 'statsdecision.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default="postgresql://statsdecision_sql_user:CSTHYWJCkltUtGk6G4EcRgJXoDwLvKRN@dpg-cvqpvppr0fns73fp5qig-a.oregon-postgres.render.com/statsdecision_sql,  # Remplacez par votre URL PostgreSQL",
-        conn_max_age=600
-    )
+    'default': dj_database_url.config('DATABASE_URL')
 }
 
 
@@ -126,7 +122,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'statsdecision_app/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 WHITENOISE_MANIFEST_STRICT = False
 
@@ -154,3 +156,24 @@ EMAIL_HOST_USER = "kaborealphonse75@gmail.com"
 CONTACT_EMAIL= "kaborealphonse75@gmail.com"
 EMAIL_HOST_PASSWORD = "bgnt tevr ggla doer"
 
+# ========================
+# SECURITY HEADERS
+# ========================
+if ON_RENDER or not DEBUG:
+    # HTTPS Settings
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    
+    # HSTS Settings
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    
+    # Autres paramètres de sécurité
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = 'DENY'
+
+    SITE_NAME = "StatsDécision Consulting"
