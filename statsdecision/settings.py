@@ -14,6 +14,7 @@ import os
 import dj_database_url
 from pathlib import Path
 from django.urls import reverse_lazy
+from decouple import config
 import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -87,7 +88,7 @@ WSGI_APPLICATION = 'statsdecision.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config('DATABASE_URL')
+    'default': dj_database_url.parse(config('DATABASE_URL')
 }
 
 
@@ -175,7 +176,7 @@ if ON_RENDER or not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     
-    # Autres paramètres de sécurité
+    # Autres paramètres de sécuritép
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
