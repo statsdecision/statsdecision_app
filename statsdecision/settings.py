@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-dev-key-unsafe')
 # Détection automatique de l'environnement Render
 ON_RENDER = os.environ.get('RENDER', None) is not None
 
-DEBUG = os.environ.get('DEBUG', 'False') == 'True' and not ON_RENDER
+DEBUG = False
 
 ALLOWED_HOSTS = [
     os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'statdecision-1.onrender.com'),
