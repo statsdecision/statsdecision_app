@@ -23,9 +23,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('statsdecision_app.urls')),
-    #path('', include('users.urls')),  
-    #path('formation/', include('formation.urls'))
-    #path('admin/',redirect_non_admins)
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
