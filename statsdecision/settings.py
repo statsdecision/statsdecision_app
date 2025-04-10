@@ -21,7 +21,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ON_RENDER = os.environ.get('RENDER', None) is not None
 
 ALLOWED_HOSTS = [
-    'statsdecision.onrender.com', 
+    'statsdecision-app.onrender.com', 
     'localhost',
     '127.0.0.1'
 ]
