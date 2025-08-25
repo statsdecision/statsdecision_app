@@ -17,6 +17,11 @@ urlpatterns = [
     path('Evennement', views.Evennement, name='Evennement'),
     path('register/', views.register, name='register'),
     path('', views.login_view, name='login'),
+    # URLs pour les fichiers - NOUVELLES LIGNES
+    path('download/document/<int:document_id>/', views.download_document, name='download_document'),
+    path('download/video/<int:video_id>/', views.download_video, name='download_video'),
+    path('view/document/<int:document_id>/', views.view_document, name='view_document'),
+    
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', CustomPasswordResetDoneView.as_view(), name='password_reset_done'),

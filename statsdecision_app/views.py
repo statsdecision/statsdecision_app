@@ -175,7 +175,80 @@ def contact_view(request):
 
     return render(request, 'contact.html')
 
+# Ajoute ces vues dans ton views.py
 
+from django.http import HttpResponse, Http404, FileResponse
+from django.shortcuts import get_object_or_404
+import os
+import mimetypes
+
+def download_document(request, document_id):
+    """Vue pour télécharger un document"""
+    document = get_object_or_404(Document, id=document_id)
+    
+    if document.file and os.path.exists(document.file.path):
+        # Déterminer le type de fichier
+        content_type, encoding = mimetypes.guess_type(document.file.path)
+        if content_type is None:
+            content_type = 'application/octet-stream'
+        
+        # Créer la réponse avec le fichier
+        response = FileResponse(
+            open(document.file.path, 'rb'),
+            content_type=content_type
+        )
+        
+        # Définir le nom du fichier pour le téléchargement
+        filename = os.path.basename(document.file.path)
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        
+        return response
+    else:
+        raise Http404("Fichier introuvable")
+
+def download_video(request, video_id):
+    """Vue pour télécharger une vidéo"""
+    video = get_object_or_404(Video, id=video_id)
+    
+    if video.video_file and os.path.exists(video.video_file.path):
+        response = FileResponse(
+            open(video.video_file.path, 'rb'),
+            content_type='video/mp4'  # Ajuste selon tes formats
+        )
+        
+        filename = os.path.basename(video.video_file.path)
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        
+        return response
+    else:
+        raise Http404("Vidéo introuvable")
+
+def view_document(request, document_id):
+    """Vue pour afficher un document dans le navigateur"""
+    document = get_object_or_404(Document, id=document_id)
+    
+    if document.file and os.path.exists(document.file.path):
+        content_type, encoding = mimetypes.guess_type(document.file.path)
+        if content_type is None:
+            content_type = 'application/octet-stream'
+        
+        response = FileResponse(
+            open(document.file.path, 'rb'),
+            content_type=content_type
+        )
+        
+        # Pour afficher dans le navigateur (pas de téléchargement forcé)
+        filename = os.path.basename(document.file.path)
+        response['Content-Disposition'] = f'inline; filename="{filename}"'
+        
+        return response
+    else:
+        raise Http404("Fichier introuvable")
+
+# CORRECTION de ta vue document (tu avais une erreur)
+def document(request):
+    documents = Document.objects.all()  # C'était "object" au lieu de "objects"
+    return render(request, "documents.html", {'documents': documents})
 
 
 
